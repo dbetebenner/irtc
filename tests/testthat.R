@@ -1,4 +1,4 @@
 library(testthat)
-library({{rPackage.name}})
+library(irtc)
 
-test_check("{{rPackage.name}}")
+test_check("irtc")

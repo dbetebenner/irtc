@@ -3,9 +3,9 @@ project:
   output-dir: ../../docs
 
 book:
-  title: "{{thesis.workingTitle}}"
-  subtitle: "{{thesis.workingSubtitle}}"
-  author: "{{user.name}}"
+  title: "IRTc: Copula-Based Item Response Theory"
+  subtitle: ""
+  author: "Damian Betebenner"
   date: today
   # Pin the single-file PDF name so build-thesis.yml finds `docs/thesis.pdf`
   # (a book PDF is otherwise named from the title → the upload/commit missed it).

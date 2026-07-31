@@ -1,8 +1,8 @@
-# {{rPackage.name}}
+# irtc
 
-> R package supporting {{user.name}}'s dissertation, "{{thesis.workingTitle}}", provisioned via [dissertation.ai](https://dissertation.ai).
+> R package supporting Damian Betebenner's dissertation, "IRTc: Copula-Based Item Response Theory", provisioned via [dissertation.ai](https://dissertation.ai).
 
-This package is the **R-package half** of a two-repo dissertation environment. The NextJS app half lives at [`github.com/{{user.githubUsername}}/{{metadata.name}}`](https://github.com/{{user.githubUsername}}/{{metadata.name}}) and includes this package as a Git submodule at `packages/r-packages/{{rPackage.name}}/`.
+This package is the **R-package half** of a two-repo dissertation environment. The NextJS app half lives at [`github.com/dbetebenner/dbetebenner-dissertation`](https://github.com/dbetebenner/dbetebenner-dissertation) and includes this package as a Git submodule at `packages/r-packages/irtc/`.
 
 ## What's in this repo
 
@@ -21,8 +21,8 @@ This package is the **R-package half** of a two-repo dissertation environment. T
 ## Quick start
 
 ```sh
-git clone https://github.com/{{user.githubUsername}}/{{rPackage.name}}.git
-cd {{rPackage.name}}
+git clone https://github.com/dbetebenner/irtc.git
+cd irtc
 
 # Edit chapter content in ui/www/chapters/*.qmd
 # (or open this repo in your AI-enabled editor)
@@ -45,7 +45,7 @@ cd ui/www && quarto preview
 
 ## The two-repo relationship
 
-This R package + the dissertation app at `github.com/{{user.githubUsername}}/{{metadata.name}}` are designed to be edited together. Most users clone the app repo with `--recursive` to get both at once. Changes to thesis content + R code go in this repo; changes to the spec + landing page + app-level configuration go in the app repo.
+This R package + the dissertation app at `github.com/dbetebenner/dbetebenner-dissertation` are designed to be edited together. Most users clone the app repo with `--recursive` to get both at once. Changes to thesis content + R code go in this repo; changes to the spec + landing page + app-level configuration go in the app repo.
 
 ## Framework links
 

@@ -1,6 +1,6 @@
-# {{rPackage.name}} — AI agent operating manual (R package side)
+# irtc — AI agent operating manual (R package side)
 
-> This repo is the **R-package half** of {{user.name}}'s dissertation. The NextJS app half lives at [`github.com/{{user.githubUsername}}/{{metadata.name}}`](https://github.com/{{user.githubUsername}}/{{metadata.name}}). Both were provisioned via [dissertation.ai](https://dissertation.ai).
+> This repo is the **R-package half** of Damian Betebenner's dissertation. The NextJS app half lives at [`github.com/dbetebenner/dbetebenner-dissertation`](https://github.com/dbetebenner/dbetebenner-dissertation). Both were provisioned via [dissertation.ai](https://dissertation.ai).
 
 ## What this repo is
 
@@ -38,7 +38,7 @@ The `ui/www/` Quarto root mirrors the canonical [dataimago-rpkg](https://github.
 
 ## The dataimago-spec.yaml is in the APP repo
 
-The user's `dataimago-spec.yaml` lives in the **app repo** at `github.com/{{user.githubUsername}}/{{metadata.name}}`, not here. But its content drives how `_quarto.yml` substitutes values, what chapters exist, what the bibliography is configured for, etc. When the spec changes, the app repo's `generate.yml` workflow runs `dataimago::ai(spec_path)` which may push changes to THIS repo via the submodule.
+The user's `dataimago-spec.yaml` lives in the **app repo** at `github.com/dbetebenner/dbetebenner-dissertation`, not here. But its content drives how `_quarto.yml` substitutes values, what chapters exist, what the bibliography is configured for, etc. When the spec changes, the app repo's `generate.yml` workflow runs `dataimago::ai(spec_path)` which may push changes to THIS repo via the submodule.
 
 ## Constraints
 
