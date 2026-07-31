@@ -11,6 +11,8 @@ Imports:
     jsonlite (>= 1.9.0),
     yaml (>= 2.3.0)
 Suggests:
+    FactorCopula (>= 0.9),
+    statmod,
     mirt (>= 1.40),
     testthat (>= 3.0.0),
     quarto
