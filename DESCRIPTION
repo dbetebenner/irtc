@@ -11,6 +11,7 @@ Imports:
     jsonlite (>= 1.9.0),
     yaml (>= 2.3.0)
 Suggests:
+    mirt (>= 1.40),
     testthat (>= 3.0.0),
     quarto
 Encoding: UTF-8
@@ -20,4 +21,4 @@ URL: https://github.com/dbetebenner/irtc
 BugReports: https://github.com/dbetebenner/irtc/issues
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+Config/roxygen2/version: 8.0.0
