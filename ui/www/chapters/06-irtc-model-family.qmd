@@ -1,0 +1,26 @@
+---
+title: "The IRTc Model Family and Conventional IRT as Special Cases"
+---
+
+## The IRTc construction
+
+$$P(Y_i \le y_i \mid \theta_i) = C_\theta\!\big(F_1(y_{i1} \mid \theta_i, \xi_1), \ldots, F_J(y_{iJ} \mid \theta_i, \xi_J);\ \delta\big)$$
+
+*Item-response marginals $F_j$ separated from the dependence structure
+$C_\theta$ with parameters $\delta$; copula placement options (among observed
+responses conditional on $\theta$, among latent response variables, among
+latent dimensions, among residuals, among testlet effects).*
+
+## Conventional IRT located within IRTc
+
+*The independence copula recovers local-independence IRT (Level 1 of the model
+ladder — the product-copula wrapper with its numerical-tolerance acceptance
+test). For each conventional model, classify the relationship: exact
+equivalence, approximation, or analogy — nothing stronger than what is proved.*
+
+## Parameter interpretation under dependence
+
+*What difficulty, discrimination, guessing, and thresholds mean when dependence
+is no longer Gaussian or product-form; when a copula parameter is a substantive
+estimand vs a nuisance parameter for fit; whether any Rasch-style invariance
+survives restricted copula families.*

@@ -4,27 +4,47 @@ title: "Introduction"
 
 ## Background
 
-Pull from your `dataimago-spec.yaml`'s `vertical.dissertation.thesis.background`
-for intellectual + personal context. Two or three paragraphs covering both
-the intellectual genealogy (what work led you here, what scholarly conversations
-you're joining) and the personal / practical motivation (why this question,
-why now, why you).
+Conventional IRT treats local independence as the default assumption: conditional
+on ability, item responses factorize into a product of item-level probabilities.
+The founding conjecture of this project — treated strictly as a hypothesis, not
+evidence (claim C0001 in the ledger) — is that if Lord-era IRT had had access to
+Sklar's theorem, copula theory, and modern compute, parts of IRT might have
+developed as a dependence-modeling framework in which local independence is
+simply the independence-copula case rather than the default.
+
+*Expand from `dataimago-spec.yaml` → `vertical.dissertation.thesis.background`:
+the intellectual genealogy (student growth percentiles, large-scale assessment,
+local dependence and testlets as persistent practical realities) and the
+dual-purpose framing (the dissertation as the first end-to-end stress test of
+the dataimago research machine).*
 
 ## Research question
 
-Pull from your `dataimago-spec.yaml`'s
-`vertical.dissertation.thesis.researchQuestion`. State the question(s)
-precisely — well-formed, with appropriate scope, identifying what's empirical
-/ theoretical / methodological.
+Can a copula-first formulation of Item Response Theory (IRTc) recover
+conventional local-independence IRT as the independence-copula special case —
+and on which real item-response datasets does separating item-response marginals
+from dependence structures improve held-out prediction, model fit, and
+diagnostic interpretability relative to Rasch/2PL/3PL/GRM/MIRT baselines?
 
 ## Contribution
 
-Pull from your `dataimago-spec.yaml`'s `vertical.dissertation.thesis.contribution`.
-State the contribution clearly. If you have multiple contributions, distinguish
-them (theoretical / methodological / empirical / practical) in a numbered list.
+1. **Theory** — a formally specified IRTc model family: marginals separated from
+   dependence structures, identifiability assumptions for discrete responses
+   stated explicitly, and a precise characterization of which conventional IRT
+   models are special cases, approximations, or mere analogies.
+2. **Empirics** — fair, reproducible benchmarks against conventional baselines on
+   simulated and Item Response Warehouse (IRW) data, with failure cases
+   documented as first-class results.
+3. **Infrastructure** — a reproducible research application in which every
+   material claim is citation-backed via a claim ledger and every experiment is
+   registered before it runs.
 
 ## Roadmap
 
-This dissertation proceeds as follows. Chapter 2 reviews the relevant literature.
-Chapter 3 details the methodology. Chapter 4 presents the results. Chapter 5
-discusses implications. Chapter 6 concludes.
+Chapter 2 frames the historical counterfactual. Chapter 3 examines conventional
+IRT and the local independence assumption. Chapter 4 introduces copulas and
+Sklar's theorem. Chapter 5 confronts the discrete response problem. Chapter 6
+defines the IRTc model family and locates conventional IRT within it. Chapter 7
+develops estimation strategies and simulation studies. Chapter 8 presents IRW
+benchmark datasets and results. Chapter 9 closes with diagnostics, sensitivity
+analyses, and limitations.

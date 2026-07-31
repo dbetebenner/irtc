@@ -1,0 +1,26 @@
+---
+title: "Historical Framing: From Empirical Curves and Normal Ogives to Dependence Modeling"
+---
+
+## The empirical-curve and normal-ogive lineage
+
+*Trace the development from empirical item characteristic curves through
+normal-ogive and logistic models (Lord, Novick, Rasch, Birnbaum, Samejima,
+Bock) — primary sources per the WP1 bibliography; every historical claim
+carries a source ID.*
+
+## Local independence as a founding assumption
+
+*How and why conditional independence became the default: computational
+constraints, estimation tractability, and the era's available mathematics.*
+
+## The counterfactual, stated carefully
+
+*The Lord-era conjecture (claim C0001, `hypothesis`): a generator of research
+questions, never evidence. What the counterfactual does and does not license —
+per the claim-ledger rules, this chapter frames questions; it proves nothing.*
+
+## Dependence modeling arrives
+
+*Sklar (1959) to modern copula families (Joe, Nelsen); factor-copula item
+response models (Kadhem & Nikoloulopoulos 2021) as the closest existing work.*

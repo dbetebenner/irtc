@@ -1,0 +1,28 @@
+---
+title: "Estimation Strategies and Simulation Studies"
+---
+
+## Estimation strategies
+
+*Per model-ladder level: `mirt`/`TAM` baselines (EM, MHRM); FactorCopula
+estimation for one-factor and structured copulas; rectangle likelihoods;
+Bayesian augmentation where justified. Every fit records versions, seeds,
+optimizer settings, convergence diagnostics, and warnings (WP3 gates — no
+silent inclusion of nonconverged fits).*
+
+## Simulation designs
+
+*Every model has a simulation recipe before touching real data (WP2 gate):
+binary 2PL and ordinal GRM generators first, then copula-family generators for
+parameter recovery.*
+
+## Parameter recovery
+
+*Recovery RMSE and bias by copula family, sample size, and item count;
+stability across optimization starts.*
+
+## The Level-1 equivalence test
+
+*The product-copula wrapper must match baseline estimates, log-likelihoods, and
+predicted probabilities within numerical tolerance — differences explained and
+documented, or the ladder does not advance.*

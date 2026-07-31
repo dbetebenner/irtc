@@ -1,0 +1,29 @@
+---
+title: "Conventional IRT and the Local Independence Assumption"
+---
+
+## The conventional model family
+
+*Rasch/1PL, 2PL, 3PL, graded response, (generalized) partial credit, MIRT and
+bi-factor — the Level-0 baselines of the model ladder, implemented via `mirt`
+and `TAM`.*
+
+## Local independence, formally
+
+For a response vector $Y_i = (Y_{i1}, \ldots, Y_{iJ})$:
+
+$$P(Y_i = y_i \mid \theta_i) = \prod_j P(Y_{ij} = y_{ij} \mid \theta_i, \xi_j)$$
+
+*State the assumption precisely; distinguish it from unidimensionality.*
+
+## Where the assumption strains
+
+*Local dependence, testlets, item bundles, speededness, multidimensionality —
+the persistent practical realities conventional models treat as nuisances.
+Q3-style residual diagnostics and limited-information fit statistics as the
+detection toolkit.*
+
+## Existing accommodations
+
+*Testlet response theory, bi-factor/two-tier models, latent class IRT — what
+each concedes to dependence, and at what interpretive cost.*

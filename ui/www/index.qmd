@@ -16,11 +16,14 @@ copy is committed by the `build-thesis.yml` workflow).
 
 - [Front matter](chapters/00-front-matter.qmd)
 - [Introduction](chapters/01-introduction.qmd)
-- [Literature review](chapters/02-literature-review.qmd)
-- [Methodology](chapters/03-methodology.qmd)
-- [Results](chapters/04-results.qmd)
-- [Discussion](chapters/05-discussion.qmd)
-- [Conclusion](chapters/06-conclusion.qmd)
+- [Historical Framing: From Empirical Curves and Normal Ogives to Dependence Modeling](chapters/02-historical-framing.qmd)
+- [Conventional IRT and the Local Independence Assumption](chapters/03-conventional-irt-assumptions.qmd)
+- [Copulas, Sklar's Theorem, and Dependence Structures](chapters/04-copulas-and-sklar.qmd)
+- [The Discrete Response Problem](chapters/05-the-discrete-response-problem.qmd)
+- [The IRTc Model Family and Conventional IRT as Special Cases](chapters/06-irtc-model-family.qmd)
+- [Estimation Strategies and Simulation Studies](chapters/07-estimation-and-simulation.qmd)
+- [IRW Benchmark Datasets and Results](chapters/08-irw-benchmarks-and-results.qmd)
+- [Diagnostics, Sensitivity Analyses, and Limitations](chapters/09-diagnostics-sensitivity-limitations.qmd)
 - [Back matter](chapters/99-back-matter.qmd)
 
 ## Formatting

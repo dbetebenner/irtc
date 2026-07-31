@@ -1,0 +1,27 @@
+---
+title: "Diagnostics, Sensitivity Analyses, and Limitations"
+---
+
+## Diagnostics
+
+*Residual-dependence (Q3-style) reduction, tail-dependence diagnostics,
+local-dependence heatmaps, calibration curves, ability-estimate comparisons —
+can IRTc diagnostics see what conventional residual diagnostics miss?*
+
+## Sensitivity analyses
+
+*Copula family set, starting values, quadrature/integration method, sample and
+item subsampling, missingness handling, category collapsing, group/testlet
+definitions, split construction, optimizer thresholds (charter §14.4).
+Sensitivity precedes any superiority claim (WP5 gate).*
+
+## Interpretability and stability
+
+*Are the additional dependence parameters stable and interpretable at realistic
+educational-testing sample sizes, or does model-selection risk erase the gains?*
+
+## Limitations
+
+*Required by the claim-ledger rules: where IRTc is not yet justified, where
+identifiability remains conjectural, where compute constrains the ladder, and
+what the acceptance criteria (charter §20) still leave open.*

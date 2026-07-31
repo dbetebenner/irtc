@@ -1,0 +1,21 @@
+---
+title: "Copulas, Sklar's Theorem, and Dependence Structures"
+---
+
+## Copulas and Sklar's theorem
+
+*Definitions, Sklar's theorem, and the uniqueness caveat: uniqueness holds under
+continuous marginals — a caveat that becomes central in Chapter 5.*
+
+## Copula families and their dependence signatures
+
+*Gaussian/BVN, Student t, Frank, Clayton/Gumbel and rotations, Joe/BB families:
+tail dependence, asymmetry, and what each signature could mean psychometrically
+(items jointly failing among low-ability examinees; region-specific
+discrimination).*
+
+## Structured constructions
+
+*Factor copulas, bi-factor and second-order copulas, vines, factor trees — the
+constructions the model ladder's Levels 2–4 build on (FactorCopula as the
+implementation reference; capability claims only).*

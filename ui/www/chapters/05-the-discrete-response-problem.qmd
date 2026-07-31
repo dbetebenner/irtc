@@ -1,0 +1,31 @@
+---
+title: "The Discrete Response Problem"
+---
+
+*The load-bearing chapter for mathematical honesty — see
+`wiki/theory/discrete-copula-cautions.md`, written before any model claims.*
+
+## Why discreteness breaks naive Sklar arguments
+
+*Item responses are dichotomous or ordinal; the copula linking observed
+responses is not unique (claim C0002). No "mathematically cleaner" claim may
+lean on continuous-Sklar uniqueness.*
+
+## Candidate resolutions
+
+1. **Latent-continuous formulation** — categories as thresholds of latent
+   continuous response variables; copulas on the latent scale.
+2. **Exact rectangle-probability likelihoods** — category probabilities as
+   copula rectangle differences.
+3. **Bayesian data augmentation** — Smith & Khaled (2012) as the anchor caution:
+   estimation difficulty beyond the bivariate case.
+4. **Parametric factor-copula constructions** — existing discrete-data factor
+   copula models as the starting point.
+5. **Distributional/randomized transforms** — only if the literature supports
+   them for the target inference.
+
+## Identifiability conditions
+
+*State what is and is not identified for dichotomous and ordinal data under
+each resolution — every theorem-like statement gets proof, citation, or a
+`conjecture` label (WP2 gates).*

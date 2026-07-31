@@ -1,0 +1,29 @@
+---
+title: "IRW Benchmark Datasets and Results"
+---
+
+## The Item Response Warehouse
+
+*IRW v28.2: 900+ harmonized open item-response datasets, 2B+ responses
+(Behavior Research Methods, 2025). Access via the `irw` R package with Redivis
+authentication. Not every IRW dataset suits every IRTc model — selection
+criteria and data cards per WP4.*
+
+## Benchmark design
+
+*Tiered datasets (smoke-test / primary / stress-test); immutable raw zone;
+reproducible splits; fairness rules from charter §14.3 — same preprocessing,
+same splits, same inclusion criteria, failed fits reported, stronger baselines
+before any IRTc gain is claimed.*
+
+## Results
+
+*Held-out log loss and Brier score as primary metrics; marginal likelihood,
+AIC/BIC/SABIC, M2, calibration by ability strata as secondary. Every table
+carries model version, dataset version, split ID, and seed. Results appear here
+only from pre-registered experiments (`experiments/registry.yaml`).*
+
+## Failure cases
+
+*Documented as first-class results — datasets where IRTc does not improve on
+baselines are reported with the same prominence as successes.*

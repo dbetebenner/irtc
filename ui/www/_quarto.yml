@@ -14,11 +14,14 @@ book:
     - index.qmd
     - chapters/00-front-matter.qmd
     - chapters/01-introduction.qmd
-    - chapters/02-literature-review.qmd
-    - chapters/03-methodology.qmd
-    - chapters/04-results.qmd
-    - chapters/05-discussion.qmd
-    - chapters/06-conclusion.qmd
+    - chapters/02-historical-framing.qmd
+    - chapters/03-conventional-irt-assumptions.qmd
+    - chapters/04-copulas-and-sklar.qmd
+    - chapters/05-the-discrete-response-problem.qmd
+    - chapters/06-irtc-model-family.qmd
+    - chapters/07-estimation-and-simulation.qmd
+    - chapters/08-irw-benchmarks-and-results.qmd
+    - chapters/09-diagnostics-sensitivity-limitations.qmd
     - chapters/99-back-matter.qmd
 
 bibliography: references.bib
