@@ -1,0 +1,45 @@
+project:
+  type: book
+  output-dir: ../../docs
+
+book:
+  title: "{{thesis.workingTitle}}"
+  subtitle: "{{thesis.workingSubtitle}}"
+  author: "{{user.name}}"
+  date: today
+  # Pin the single-file PDF name so build-thesis.yml finds `docs/thesis.pdf`
+  # (a book PDF is otherwise named from the title → the upload/commit missed it).
+  output-file: thesis
+  chapters:
+    - index.qmd
+    - chapters/00-front-matter.qmd
+    - chapters/01-introduction.qmd
+    - chapters/02-literature-review.qmd
+    - chapters/03-methodology.qmd
+    - chapters/04-results.qmd
+    - chapters/05-discussion.qmd
+    - chapters/06-conclusion.qmd
+    - chapters/99-back-matter.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+  pdf:
+    documentclass: thesis
+    classoption: [oneside, 12pt]
+    pdf-engine: xelatex
+    keep-tex: true
+    include-in-header:
+      text: |
+        % Load dataimago.sty as a package. Do NOT use include-in-header file
+        % injection here — that inlines the .sty's \endinput into index.tex and
+        % truncates the document ("no legal \end found" / Emergency stop).
+        \usepackage{dataimago}
+    mainfont: "Noto Sans"
+    sansfont: "Noto Sans"
+    mathfont: "Noto Sans Math"
+    fig-pos: H

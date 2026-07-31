@@ -1,0 +1,30 @@
+---
+title: "{{thesis.workingTitle}}"
+author: "{{user.name}}"
+---
+
+# About this thesis
+
+This is the landing page for {{user.name}}'s dissertation, "{{thesis.workingTitle}}",
+at {{institution.name}} ({{institution.degreeProgram}}).
+
+The thesis is rendered via Quarto + XeLaTeX to a PDF whenever you push changes
+to `ui/www/` or `R/`. See `docs/thesis.pdf` for the latest build (a stable
+copy is committed by the `build-thesis.yml` workflow).
+
+## Chapters
+
+- [Front matter](chapters/00-front-matter.qmd)
+- [Introduction](chapters/01-introduction.qmd)
+- [Literature review](chapters/02-literature-review.qmd)
+- [Methodology](chapters/03-methodology.qmd)
+- [Results](chapters/04-results.qmd)
+- [Discussion](chapters/05-discussion.qmd)
+- [Conclusion](chapters/06-conclusion.qmd)
+- [Back matter](chapters/99-back-matter.qmd)
+
+## Formatting
+
+See [`THESIS-CLS-README.md`](THESIS-CLS-README.md) for the 3-mode thesis class
+file strategy + how to iterate on your `thesis.cls` for institutional
+compliance.

@@ -1,0 +1,23 @@
+---
+title: "Literature Review"
+---
+
+## Theoretical framework
+
+Identify the theoretical traditions your work engages with. Cite foundational
+works using `[@bibtex-key]` syntax — entries live in `../references.bib`.
+
+## Current state of the field
+
+What does the existing literature say about your research question? Map the
+landscape: who are the major voices, what positions do they hold, where are
+the gaps?
+
+## Positioning your contribution
+
+Locate your work within the literature. What gap does it fill? What
+conversations does it extend? What does it dispute, if anything?
+
+## Synthesis
+
+A short synthesis paragraph that motivates the methodology chapter.

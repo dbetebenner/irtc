@@ -1,0 +1,30 @@
+---
+title: "Introduction"
+---
+
+## Background
+
+Pull from your `dataimago-spec.yaml`'s `vertical.dissertation.thesis.background`
+for intellectual + personal context. Two or three paragraphs covering both
+the intellectual genealogy (what work led you here, what scholarly conversations
+you're joining) and the personal / practical motivation (why this question,
+why now, why you).
+
+## Research question
+
+Pull from your `dataimago-spec.yaml`'s
+`vertical.dissertation.thesis.researchQuestion`. State the question(s)
+precisely — well-formed, with appropriate scope, identifying what's empirical
+/ theoretical / methodological.
+
+## Contribution
+
+Pull from your `dataimago-spec.yaml`'s `vertical.dissertation.thesis.contribution`.
+State the contribution clearly. If you have multiple contributions, distinguish
+them (theoretical / methodological / empirical / practical) in a numbered list.
+
+## Roadmap
+
+This dissertation proceeds as follows. Chapter 2 reviews the relevant literature.
+Chapter 3 details the methodology. Chapter 4 presents the results. Chapter 5
+discusses implications. Chapter 6 concludes.

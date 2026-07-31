@@ -1,0 +1,14 @@
+---
+title: "Back matter"
+---
+
+# References {.unnumbered}
+
+The bibliography is rendered automatically from `../references.bib`. No
+content needed here — Quarto handles it.
+
+# Appendices {.unnumbered}
+
+Optional. If you have appendices (data tables, supplementary analyses, code
+listings, interview protocols), add them as `chapters/99a-appendix-X.qmd`,
+`99b-appendix-Y.qmd`, etc. and reference them in `../_quarto.yml`.

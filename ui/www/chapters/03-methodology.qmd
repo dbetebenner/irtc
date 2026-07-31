@@ -1,0 +1,40 @@
+---
+title: "Methodology"
+---
+
+## Approach
+
+Pull the high-level approach from your `dataimago-spec.yaml`'s
+`vertical.dissertation.thesis.methodology.approach` field
+(quantitative / qualitative / mixed-methods / computational) and elaborate.
+
+## Data
+
+Describe your data source(s). If you're using restricted data subject to a
+DUA, note that here + record details in `dataimago-spec.yaml`'s
+`vertical.dissertation.compliance.dua`.
+
+## Analysis
+
+Describe the analytic techniques. If quantitative or computational, R code
+in the parent package's `R/` directory can be referenced here via embedded
+chunks:
+
+```{r}
+#| echo: true
+# Example: load the package + show its info
+# library(yourpkg)
+# package_info()
+```
+
+## Ethical considerations
+
+If your work required IRB approval, note the approval number here + record
+details in `dataimago-spec.yaml`'s `vertical.dissertation.compliance.irb`.
+The number typically appears on the dissertation's title page at many
+institutions.
+
+## Limitations
+
+What are the methodological limits of this approach? Be honest. Committees
+appreciate candor about scope.

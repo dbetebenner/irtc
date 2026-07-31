@@ -1,0 +1,20 @@
+---
+title: "Front matter"
+---
+
+# Abstract {.unnumbered}
+
+Your dissertation abstract — typically one paragraph, ~250–350 words depending
+on institutional convention. Pull from your `dataimago-spec.yaml`'s
+`vertical.dissertation.thesis.contribution` field as a starting point.
+
+# Acknowledgments {.unnumbered}
+
+Acknowledgments for your advisor, committee, family, funders. If you have
+funding to acknowledge, also fill in your `dataimago-spec.yaml`'s `funding`
+section — that field can be used to auto-render this section in a future
+iteration.
+
+# Dedication {.unnumbered}
+
+Optional. Remove this section if not used.

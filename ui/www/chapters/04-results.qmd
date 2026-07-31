@@ -1,0 +1,20 @@
+---
+title: "Results"
+---
+
+This chapter's structure depends entirely on your methodology + research
+question. Replace the placeholder sections below with sections appropriate
+to your work.
+
+## (Section 1)
+
+(Replace this section.)
+
+## (Section 2)
+
+(Replace this section.)
+
+## Summary of findings
+
+(A short summary paragraph at the end of the results chapter — easy for
+your committee to skim. Lead with the most important findings.)

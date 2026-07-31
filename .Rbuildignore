@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.github$
+^\.git$
+^\.gitattributes$
+^\.gitignore$
+^CLAUDE\.md$
+^NEWS\.md$
+^README\.md$
+^docs$
+^ui/www/_book$
+^ui/www/\.quarto$
