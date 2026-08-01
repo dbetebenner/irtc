@@ -96,6 +96,24 @@ fit_copula_1f <- function(data, family, nq = 25) {
     tau = as.numeric(fit$taus)
   )
 
+  # Carry the first-stage cutpoints (cumulative category proportions on the
+  # uniform scale; mle1factor pads its matrix with 1s) so held-out
+  # evaluation can reconstruct the fitted likelihood exactly. Columns
+  # cut1..cutM, NA-padded per item.
+  cut_mat <- as.matrix(fit$cutpoints)
+  cut_list <- lapply(seq_len(n_items), function(j) {
+    v <- cut_mat[, j]
+    v[v < 1 - 1e-12]
+  })
+  max_cuts <- max(vapply(cut_list, length, integer(1)))
+  for (m in seq_len(max_cuts)) {
+    estimates[[paste0("cut", m)]] <- vapply(
+      cut_list,
+      function(v) if (length(v) >= m) v[[m]] else NA_real_,
+      numeric(1)
+    )
+  }
+
   model <- if (length(unique(family)) == 1) {
     paste0("copula-1f-", family[[1]])
   } else {

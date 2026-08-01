@@ -55,7 +55,7 @@ test_that("fit_copula_1f fits ordinal data and returns a model result", {
   expect_true(res$converged)
   expect_true(res$log_likelihood < 0)
   expect_equal(nrow(res$estimates), 5)
-  expect_named(res$estimates, c("item", "family", "theta", "tau"), ignore.order = TRUE)
+  expect_contains(names(res$estimates), c("item", "family", "theta", "tau", "cut1"))
   expect_true(all(res$estimates$family == "gum"))
 })
 
