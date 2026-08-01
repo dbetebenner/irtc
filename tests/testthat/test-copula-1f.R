@@ -98,6 +98,20 @@ test_that("fit_copula_1f validates inputs", {
   expect_error(fit_copula_1f(ordinal, family = c("gum", "gum")), "family")
   expect_error(fit_copula_1f("not data", family = "gum"), "matrix")
 
-  binary_sim <- simulate_2pl(n_persons = 100, n_items = 4, seed = 1)
-  expect_error(fit_copula_1f(binary_sim, family = "gum"), "ordinal")
+  constant <- matrix(1L, nrow = 50, ncol = 3)
+  expect_error(fit_copula_1f(constant, family = "gum"), "categories")
+})
+
+test_that("fit_copula_1f supports binary items (single cutpoint per item)", {
+  skip_if_not_installed("FactorCopula")
+  skip_if_not_installed("statmod")
+
+  sim <- simulate_2pl(n_persons = 400, n_items = 6, seed = 13)
+  res <- fit_copula_1f(sim, family = "bvn", nq = 15)
+
+  expect_s3_class(res, "irtc_model_result")
+  expect_equal(res$model, "copula-1f-bvn")
+  expect_true(res$converged)
+  expect_true(res$log_likelihood < 0)
+  expect_equal(nrow(res$estimates), 6)
 })

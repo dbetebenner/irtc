@@ -43,9 +43,13 @@ fit_copula_1f <- function(data, family, nq = 25) {
     stop("`data` must be an irtc_simulation or an ordinal response matrix.", call. = FALSE)
   }
 
+  # Binary AND ordinal categorical responses are supported: for dichotomous
+  # items the factor copula uses a single cutpoint per item (the BVN family
+  # recovers normal-ogive-style behavior). Verified on IRW binary data
+  # (much_tte_2025_matrixreasoning, M3). Only degenerate data are refused.
   n_observed_categories <- length(unique(stats::na.omit(as.vector(responses))))
-  if (n_observed_categories <= 2) {
-    stop("One-factor copula fits require ordinal responses with 3+ categories; the data look binary.", call. = FALSE)
+  if (n_observed_categories < 2) {
+    stop("One-factor copula fits require categorical responses with 2+ observed categories.", call. = FALSE)
   }
 
   n_items <- ncol(responses)
