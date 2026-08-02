@@ -1,0 +1,82 @@
+name: Publish Quarto Site
+
+# Publishes the ui/www Quarto book (HTML, web profile) + the committed
+# thesis PDF to GitHub Pages via the artifact flow -- nothing is committed,
+# so this never races build-thesis.yml's commit-back loop. The workflow_run
+# trigger republishes the site after each PDF rebuild (the bot's skip-ci
+# commit suppresses push events but not workflow_run).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ui/www/**'
+      - 'R/**'
+      - 'man/**'
+      - 'DESCRIPTION'
+      - '.github/workflows/quarto-publish.yml'
+  workflow_run:
+    workflows: ["Build thesis PDF"]
+    types: [completed]
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-site:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          use-public-rspm: true
+
+      # The package-reference page renders man/*.Rd straight from the
+      # source tree (tools::Rd_db(dir=)) -- no package installation and no
+      # Suggests needed; knitr/rmarkdown power the executable chunk.
+      - name: Install chunk dependencies
+        run: Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
+
+      - name: Render site (web profile)
+        run: |
+          cd ui/www
+          quarto render --to html --profile web
+
+      - name: Restore committed thesis PDF into the site
+        run: git checkout -- docs/thesis.pdf
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build-site
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Enable and configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -19,7 +19,7 @@ Suggests:
 Encoding: UTF-8
 Language: en-US
 License: MIT + file LICENSE
-URL: https://github.com/dbetebenner/irtc
+URL: https://dbetebenner.github.io/irtc/, https://github.com/dbetebenner/irtc
 BugReports: https://github.com/dbetebenner/irtc/issues
 Config/testthat/edition: 3
 Roxygen: list(markdown = TRUE)

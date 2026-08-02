@@ -1,0 +1,6 @@
+# Web-profile overlay (quarto render --profile web): adds the package
+# reference as an HTML-only appendix. The PDF render (build-thesis.yml)
+# runs without a profile, so the thesis PDF never contains this page.
+book:
+  appendices:
+    - r-package.qmd

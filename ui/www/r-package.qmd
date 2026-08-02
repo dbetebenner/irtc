@@ -1,0 +1,47 @@
+---
+title: "The R package"
+---
+
+```{r}
+#| echo: false
+desc <- read.dcf("../../DESCRIPTION")
+pkg <- desc[1, "Package"]
+ver <- desc[1, "Version"]
+repo_url <- sub(",.*$", "", desc[1, "URL"])
+```
+
+`r sprintf("**%s** (v%s)", pkg, ver)` is the computational core of this
+dissertation: the methodological R code, its tests, and the Quarto + XeLaTeX
+thesis build live together in one package, developed and versioned
+independently of the dissertation's web application.
+
+## Installation
+
+```{r}
+#| echo: false
+#| results: asis
+cat(sprintf("```r\n# install.packages(\"remotes\")\nremotes::install_github(\"%s\")\n```\n",
+            sub("^https://github.com/", "", grep("github.com", strsplit(desc[1, "URL"], ",\\s*")[[1]], value = TRUE)[1])))
+```
+
+Source, issues, and CI live on [GitHub](`r sub("^https://github.com/", "https://github.com/", grep("github.com", strsplit(desc[1, "URL"], ",\\s*")[[1]], value = TRUE)[1])`).
+
+## Function reference
+
+Rendered from the package's roxygen documentation (`man/`) at publish time —
+this page cannot drift from the code.
+
+```{r}
+#| echo: false
+#| results: asis
+db <- tools::Rd_db(dir = "../..")
+topics <- sort(names(db))
+for (nm in topics) {
+  rd <- db[[nm]]
+  tf <- tempfile(fileext = ".html")
+  tools::Rd2HTML(rd, out = tf, fragment = TRUE)
+  html <- paste(readLines(tf, warn = FALSE), collapse = "\n")
+  cat(sprintf("### `%s`\n\n", sub("\\.Rd$", "", nm)))
+  cat("```{=html}\n<div class=\"rd-topic\">\n", html, "\n</div>\n```\n\n", sep = "")
+}
+```

@@ -2,7 +2,15 @@
 
 > R package supporting Damian Betebenner's dissertation, "IRTc: Copula-Based Item Response Theory", provisioned via [dissertation.ai](https://dissertation.ai).
 
+**📖 Website:** [dbetebenner.github.io/irtc](https://dbetebenner.github.io/irtc/) — the thesis as an HTML book, the [latest thesis PDF](https://dbetebenner.github.io/irtc/thesis.pdf), and the [R package reference](https://dbetebenner.github.io/irtc/r-package.html) rendered from the roxygen docs.
+
 This package is the **R-package half** of a two-repo dissertation environment. The NextJS app half lives at [`github.com/dbetebenner/dbetebenner-dissertation`](https://github.com/dbetebenner/dbetebenner-dissertation) and includes this package as a Git submodule at `packages/r-packages/irtc/`.
+
+> **Two working copies note:** this repo may be checked out both standalone
+> (`~/GitHub/DBetebenner/irtc`) and as the app repo's submodule. Both track
+> `main`: `git pull` before working in either copy, push from wherever you
+> worked, and remember the app repo pins a submodule pointer that gets bumped
+> there after this repo moves.
 
 ## What's in this repo
 
@@ -15,6 +23,7 @@ This package is the **R-package half** of a two-repo dissertation environment. T
 | `ui/www/thesis.cls` | LaTeX thesis class (see `ui/www/THESIS-CLS-README.md` for the 3-mode strategy) |
 | `ui/www/references.bib` | BibTeX bibliography |
 | `.github/workflows/build-thesis.yml` | Renders thesis PDF on every push that touches `ui/www/` or `R/` |
+| `.github/workflows/quarto-publish.yml` | Publishes the HTML book + PDF + package reference to GitHub Pages |
 | `.github/workflows/R-CMD-check.yml` | R package CI |
 | `DESCRIPTION` | R package metadata |
 

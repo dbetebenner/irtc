@@ -9,8 +9,13 @@ This is the landing page for Damian Betebenner's dissertation, "IRTc: Copula-Bas
 at dataimago (Independent research — educational measurement & psychometrics (dataimago)).
 
 The thesis is rendered via Quarto + XeLaTeX to a PDF whenever you push changes
-to `ui/www/` or `R/`. See `docs/thesis.pdf` for the latest build (a stable
-copy is committed by the `build-thesis.yml` workflow).
+to `ui/www/` or `R/`; a stable copy is committed to `docs/thesis.pdf` by the
+`build-thesis.yml` workflow.
+
+::: {.content-visible when-format="html"}
+**Read it:** [the thesis PDF](thesis.pdf) (latest CI build) · [the R package
+reference](r-package.qmd) (functions, rendered from the roxygen docs).
+:::
 
 ## Chapters
 
