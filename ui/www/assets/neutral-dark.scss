@@ -1,0 +1,12 @@
+/*-- scss:defaults --*/
+// Neutral identity, dark: interactive accent ink-200 per the ADR.
+// Values derived from @dataimago/tokens-neutral@0.1.0-alpha.7.
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Sans+Math&display=swap');
+
+$font-family-sans-serif: "Noto Sans", "Fira Sans", system-ui, sans-serif;
+$body-bg: #14140f;      // stone-900
+$body-color: #ededeb;   // stone-100
+$link-color: #d6d3d1;   // ink-200
+$primary: #d6d3d1;      // ink-200
+$code-color: #dcdcda;   // stone-200
+$code-bg: #292927;      // stone-800

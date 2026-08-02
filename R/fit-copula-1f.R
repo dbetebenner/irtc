@@ -20,6 +20,7 @@
 #' @param nq Number of Gauss-Legendre quadrature points (default 25).
 #' @return An `irtc_model_result` with `estimates` columns `item`,
 #'   `family`, `theta` (dependence parameter), and `tau` (Kendall's tau).
+#' @family model fitting
 #' @export
 fit_copula_1f <- function(data, family, nq = 25) {
   if (!requireNamespace("FactorCopula", quietly = TRUE) ||

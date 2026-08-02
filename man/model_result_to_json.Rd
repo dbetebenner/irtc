@@ -15,3 +15,9 @@ A JSON string.
 \description{
 Serialize a model result to JSON
 }
+\seealso{
+Other model results:
+\code{\link[=model_result_from_json]{model_result_from_json()}},
+\code{\link[=new_model_result]{new_model_result()}}
+}
+\concept{model results}

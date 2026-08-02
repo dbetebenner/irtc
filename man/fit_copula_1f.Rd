@@ -34,3 +34,9 @@ parameter came back finite -- the strongest check available from the
 engine. \code{n_parameters} counts the second-stage dependence parameters
 only (first-stage cutpoints are profiled empirically).
 }
+\seealso{
+Other model fitting:
+\code{\link[=fit_baseline]{fit_baseline()}},
+\code{\link[=fit_irtc]{fit_irtc()}}
+}
+\concept{model fitting}

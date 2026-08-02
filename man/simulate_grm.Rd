@@ -27,3 +27,8 @@ gets \code{n_categories - 1} strictly increasing thresholds (a uniform start
 plus positive uniform gaps). Responses follow Samejima's graded response
 model: \verb{P(Y >= k | theta) = plogis(a * (theta - b_\{k-1\}))}.
 }
+\seealso{
+Other simulation:
+\code{\link[=simulate_2pl]{simulate_2pl()}}
+}
+\concept{simulation}

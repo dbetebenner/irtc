@@ -24,3 +24,9 @@ Wraps \code{mirt::mirt()} for the charter's Level-0 baselines (Rasch, 2PL,
 GRM) and returns the standardized \code{\link[=new_model_result]{new_model_result()}} object with full
 provenance, convergence status, captured warnings, and timing.
 }
+\seealso{
+Other model fitting:
+\code{\link[=fit_copula_1f]{fit_copula_1f()}},
+\code{\link[=fit_irtc]{fit_irtc()}}
+}
+\concept{model fitting}

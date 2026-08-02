@@ -54,3 +54,9 @@ baseline or copula -- records its engine, versions, seed, convergence
 status, warnings, and timing, so that no nonconverged or unprovenanced
 fit can slip silently into a model comparison.
 }
+\seealso{
+Other model results:
+\code{\link[=model_result_from_json]{model_result_from_json()}},
+\code{\link[=model_result_to_json]{model_result_to_json()}}
+}
+\concept{model results}

@@ -28,6 +28,7 @@
 #'   reproduce a training likelihood exactly).
 #' @return A list of class `irtc_heldout`: `total_loglik`, `n_persons`,
 #'   `n_responses`, and `logloss_per_response` (negative mean).
+#' @family evaluation
 #' @export
 heldout_logloss <- function(result, newdata, nq = 61) {
   if (!inherits(result, "irtc_model_result")) {

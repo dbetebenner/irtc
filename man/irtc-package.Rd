@@ -18,6 +18,7 @@ The Quarto book at \verb{ui/www/} is the thesis source. The
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://dbetebenner.github.io/irtc/}
   \item \url{https://github.com/dbetebenner/irtc}
   \item Report bugs at \url{https://github.com/dbetebenner/irtc/issues}
 }

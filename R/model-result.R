@@ -21,6 +21,7 @@
 #' @param runtime_seconds Wall-clock fitting time in seconds.
 #' @return An object of class `irtc_model_result` (schema version 1), with
 #'   `fitted_at` stamped in UTC.
+#' @family model results
 #' @export
 new_model_result <- function(model,
                              engine,
@@ -88,6 +89,7 @@ new_model_result <- function(model,
 #'
 #' @param result An `irtc_model_result`.
 #' @return A JSON string.
+#' @family model results
 #' @export
 model_result_to_json <- function(result) {
   if (!inherits(result, "irtc_model_result")) {
@@ -100,6 +102,7 @@ model_result_to_json <- function(result) {
 #'
 #' @param json A JSON string produced by [model_result_to_json()].
 #' @return An `irtc_model_result`.
+#' @family model results
 #' @export
 model_result_from_json <- function(json) {
   x <- jsonlite::fromJSON(json)

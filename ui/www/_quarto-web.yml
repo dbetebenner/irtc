@@ -4,3 +4,12 @@
 book:
   appendices:
     - r-package.qmd
+
+# Neutral identity for the published HTML (tokens-neutral-sibling ADR):
+# Level-3 property -- Noto Sans, ink/stone/paper, no dataimago house look.
+# The PDF render (no profile) is untouched.
+format:
+  html:
+    theme:
+      light: assets/neutral-light.scss
+      dark: assets/neutral-dark.scss

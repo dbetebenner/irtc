@@ -16,6 +16,7 @@
 #'   (integer matrix, persons x items), `theta` (numeric vector),
 #'   `item_parameters` (data frame with `item`, `a`, `b`), and `generator`
 #'   (list of model, seed, and dimensions).
+#' @family simulation
 #' @export
 simulate_2pl <- function(n_persons, n_items, seed) {
   check_count(n_persons, "n_persons", min = 1)
@@ -67,6 +68,7 @@ simulate_2pl <- function(n_persons, n_items, seed) {
 #'   Responses take values in `1:n_categories`.
 #' @return An `irtc_simulation`; `item_parameters` holds `item`, `a`, and
 #'   threshold columns `b1 ... b{n_categories - 1}`.
+#' @family simulation
 #' @export
 simulate_grm <- function(n_persons, n_items, n_categories, seed) {
   check_count(n_persons, "n_persons", min = 1)

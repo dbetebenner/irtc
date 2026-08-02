@@ -30,3 +30,8 @@ then draws Bernoulli responses under
 Every simulation records its generator metadata (model, seed, dimensions)
 so downstream model results can carry full provenance.
 }
+\seealso{
+Other simulation:
+\code{\link[=simulate_grm]{simulate_grm()}}
+}
+\concept{simulation}

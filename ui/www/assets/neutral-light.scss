@@ -1,0 +1,13 @@
+/*-- scss:defaults --*/
+// Neutral identity (tokens-neutral-sibling ADR): Noto Sans for
+// omni-translatability; ink/stone/paper palette; no dataimago house styling.
+// Values derived from @dataimago/tokens-neutral@0.1.0-alpha.7.
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Sans+Math&display=swap');
+
+$font-family-sans-serif: "Noto Sans", "Fira Sans", system-ui, sans-serif;
+$body-bg: #fefdfb;      // paper-50
+$body-color: #0c0a09;   // ink-900
+$link-color: #292524;   // ink-700
+$primary: #292524;      // ink-700
+$code-color: #424240;   // stone-700
+$code-bg: #ededeb;      // stone-100

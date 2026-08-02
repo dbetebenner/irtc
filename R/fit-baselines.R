@@ -12,6 +12,7 @@
 #' @return An `irtc_model_result`. Item-parameter `estimates` use the IRT
 #'   parameterization (`a`, `b` for binary models; `a`, `b1...` thresholds
 #'   for the GRM).
+#' @family model fitting
 #' @export
 fit_baseline <- function(data, model = c("rasch", "2pl", "grm")) {
   if (!requireNamespace("mirt", quietly = TRUE)) {

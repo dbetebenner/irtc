@@ -15,3 +15,9 @@ An \code{irtc_model_result}.
 \description{
 Rebuild a model result from its JSON serialization
 }
+\seealso{
+Other model results:
+\code{\link[=model_result_to_json]{model_result_to_json()}},
+\code{\link[=new_model_result]{new_model_result()}}
+}
+\concept{model results}

@@ -42,3 +42,4 @@ at the fitted parameters, the result reproduces the engine's own
 log-likelihood. Missing responses contribute nothing (skipped, never
 imputed). GRM results are not yet supported.
 }
+\concept{evaluation}

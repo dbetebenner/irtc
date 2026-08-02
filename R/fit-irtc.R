@@ -22,6 +22,7 @@
 #' @param nq Number of quadrature points for the normal ability prior
 #'   (default 61).
 #' @return An `irtc_model_result` with 2PL `estimates` (`item`, `a`, `b`).
+#' @family model fitting
 #' @export
 fit_irtc <- function(data, copula = "independence", nq = 61) {
   if (!requireNamespace("statmod", quietly = TRUE)) {

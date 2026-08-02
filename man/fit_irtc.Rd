@@ -36,3 +36,9 @@ log-likelihood, and predicted probabilities must match the mirt 2PL
 within numerical tolerance on seeded data. Non-independence copulas are
 deliberately refused here; they arrive with the Level-2+ likelihoods.
 }
+\seealso{
+Other model fitting:
+\code{\link[=fit_baseline]{fit_baseline()}},
+\code{\link[=fit_copula_1f]{fit_copula_1f()}}
+}
+\concept{model fitting}

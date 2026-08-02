@@ -29,19 +29,46 @@ Source, issues, and CI live on [GitHub](`r sub("^https://github.com/", "https://
 ## Function reference
 
 Rendered from the package's roxygen documentation (`man/`) at publish time —
-this page cannot drift from the code.
+this page cannot drift from the code. Topics are grouped by concept (roxygen
+`@family` tags); ungrouped topics fall back to an alphabetical section, so
+this page stays correct for any package.
 
 ```{r}
 #| echo: false
 #| results: asis
 db <- tools::Rd_db(dir = "../..")
-topics <- sort(names(db))
-for (nm in topics) {
-  rd <- db[[nm]]
+
+topic_concept <- function(rd) {
+  con <- unlist(tools:::.Rd_get_metadata(rd, "concept"))
+  if (length(con) == 0) NA_character_ else con[[1]]
+}
+concepts <- vapply(db, topic_concept, character(1))
+
+emit_topic <- function(nm) {
   tf <- tempfile(fileext = ".html")
-  tools::Rd2HTML(rd, out = tf, fragment = TRUE)
+  tools::Rd2HTML(db[[nm]], out = tf, fragment = TRUE)
   html <- paste(readLines(tf, warn = FALSE), collapse = "\n")
-  cat(sprintf("### `%s`\n\n", sub("\\.Rd$", "", nm)))
+  cat(sprintf("#### `%s`\n\n", sub("\\.Rd$", "", nm)))
   cat("```{=html}\n<div class=\"rd-topic\">\n", html, "\n</div>\n```\n\n", sep = "")
+}
+
+group_order <- c("simulation", "model fitting", "evaluation", "model results")
+group_intro <- c(
+  simulation = "Seeded, provenance-carrying data generators.",
+  `model fitting` = "The model ladder's fitting engines -- conventional baselines, the IRTc product-copula wrapper, and one-factor copulas.",
+  evaluation = "Held-out prediction at fixed parameters (the benchmark primary metric).",
+  `model results` = "The standardized model-result schema every fit flows through."
+)
+groups <- unique(c(intersect(group_order, concepts), setdiff(sort(unique(na.omit(concepts))), group_order)))
+
+for (g in groups) {
+  cat(sprintf("### %s\n\n", tools::toTitleCase(g)))
+  if (!is.na(group_intro[g])) cat(group_intro[[g]], "\n\n")
+  for (nm in sort(names(db)[!is.na(concepts) & concepts == g])) emit_topic(nm)
+}
+ungrouped <- sort(names(db)[is.na(concepts)])
+if (length(ungrouped) > 0) {
+  cat("### Other topics\n\n")
+  for (nm in ungrouped) emit_topic(nm)
 }
 ```
