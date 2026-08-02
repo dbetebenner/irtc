@@ -14,7 +14,10 @@ to `ui/www/` or `R/`; a stable copy is committed to `docs/thesis.pdf` by the
 
 ::: {.content-visible when-format="html"}
 **Read it:** [the thesis PDF](thesis.pdf) (latest CI build) · [the R package
-reference](r-package.qmd) (functions, rendered from the roxygen docs).
+reference](r-package.qmd) (functions, rendered from the roxygen docs) ·
+[the knowledge base](https://dbetebenner.github.io/dbetebenner-dissertation/)
+(theory, methods, the claim ledger, the experiment registry) ·
+[the living application](https://dbetebenner-dissertation.vercel.app/).
 :::
 
 ## Chapters
