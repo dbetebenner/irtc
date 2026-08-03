@@ -97,3 +97,24 @@ test_that("heldout_logloss validates inputs", {
   grm_fit <- fit_baseline(ord, model = "grm")
   expect_error(heldout_logloss(grm_fit, ord$responses), "not yet supported")
 })
+
+test_that("extreme item parameters yield finite held-out log-loss (boundary clamp)", {
+  # Regression: exp_2026_08_02_001's 2PL baseline returned NaN -- an extreme
+  # discrimination pushed plogis to exactly 0/1 and the un-clamped marginal
+  # path took log(0). The copula path already clamps; the 2PL path must too.
+  est <- data.frame(item = c("I1", "I2"), a = c(500, 1.2), b = c(0, 0.3))
+  fake <- structure(
+    list(
+      schema_version = 1L, model = "2pl", engine = "mirt", engine_version = "x",
+      data_description = list(source = "matrix"), seed = NA_real_,
+      converged = TRUE, log_likelihood = -1, n_parameters = 4L,
+      estimates = est, warnings = character(0), runtime_seconds = 0,
+      fitted_at = "now"
+    ),
+    class = "irtc_model_result"
+  )
+  y <- matrix(c(0L, 1L, 1L, 0L), nrow = 2)
+  ev <- heldout_logloss(fake, y, nq = 21)
+  expect_true(is.finite(ev$total_loglik))
+  expect_true(is.finite(ev$logloss_per_response))
+})

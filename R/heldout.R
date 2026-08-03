@@ -81,7 +81,11 @@ marginal_loglik_2pl <- function(estimates, responses, nq) {
   a <- estimates$a
   b <- estimates$b
   eta <- outer(gq$nodes, b, `-`) * rep(a, each = nq)
-  p <- stats::plogis(eta)                                   # Q x J
+  # Clamp away exact 0/1: extreme item estimates (e.g. a Heywood-ish
+  # discrimination) otherwise produce log(0) = -Inf and a NaN metric
+  # (found by exp_2026_08_02_001's baseline). Mirrors the copula path's
+  # pcat clamp.
+  p <- pmin(pmax(stats::plogis(eta), 1e-300), 1 - 1e-16)    # Q x J
   y1 <- responses; y1[is.na(y1)] <- 0L                       # observed successes
   y0 <- 1L - responses; y0[is.na(y0)] <- 0L                  # observed failures
   ll_nq <- y1 %*% t(log(p)) + y0 %*% t(log1p(-p))            # N x Q
