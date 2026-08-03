@@ -2,37 +2,55 @@
 % Please edit documentation in R/fit-copula-1f.R
 \name{fit_copula_1f}
 \alias{fit_copula_1f}
-\title{Fit a one-factor copula IRT model via FactorCopula}
+\title{Fit a one-factor copula IRT model}
 \usage{
-fit_copula_1f(data, family, nq = 25)
+fit_copula_1f(data, family, nq = 25, engine = c("FactorCopula", "irtc"))
 }
 \arguments{
-\item{data}{An ordinal response matrix (integer categories, 3+ observed
-levels) or an \code{irtc_simulation} from \code{\link[=simulate_grm]{simulate_grm()}}.}
+\item{data}{A response matrix (integer categories, 2+ observed levels)
+or an \code{irtc_simulation} from \code{\link[=simulate_grm]{simulate_grm()}} / \code{\link[=simulate_2pl]{simulate_2pl()}}.}
 
 \item{family}{A single copula family name recycled across items, or one
-per item (FactorCopula names, e.g. \code{"gum"}, \code{"frk"}, \code{"joe"},
-\code{"rjoe"}). Single-parameter families only.}
+per item (FactorCopula names: \code{"bvn"}, \code{"frk"}, \code{"gum"}, \code{"rgum"},
+\code{"joe"}, \code{"rjoe"}). Single-parameter families only.}
 
 \item{nq}{Number of Gauss-Legendre quadrature points (default 25).}
+
+\item{engine}{\code{"FactorCopula"} (default, wrapped) or \code{"irtc"} (native).}
 }
 \value{
 An \code{irtc_model_result} with \code{estimates} columns \code{item},
-\code{family}, \code{theta} (dependence parameter), and \code{tau} (Kendall's tau).
+\code{family}, \code{theta} (dependence parameter), \code{tau} (Kendall's tau), and
+the first-stage cutpoints \code{cut1..cutM}.
 }
 \description{
-Level-2 of the charter's model ladder: wraps
-\code{FactorCopula::mle1factor()} for ordinal item-response data and returns
-the standardized \code{\link[=new_model_result]{new_model_result()}} object. Estimation is the
-package's two-stage procedure (empirical cutpoints, then copula
-parameters by quadrature MLE).
+Level-2 of the charter's model ladder: one-factor copula fits for
+item-response data, returning the standardized \code{\link[=new_model_result]{new_model_result()}}
+object. Estimation is the two-stage procedure in both engines:
+empirical cutpoints, then dependence parameters by quadrature MLE.
 }
 \details{
-\code{mle1factor()} exposes no explicit convergence diagnostic, so
-\code{converged} reports whether the log-likelihood and every dependence
-parameter came back finite -- the strongest check available from the
-engine. \code{n_parameters} counts the second-stage dependence parameters
-only (first-stage cutpoints are profiled empirically).
+Two engines maximize the same likelihood from the same first-stage
+cutpoints:
+\itemize{
+\item \code{"FactorCopula"} (default) wraps \code{FactorCopula::mle1factor()}.
+Its likelihood builds a joint contingency table over all response
+patterns -- O(2^J) for binary items -- and fails for J >= ~40
+(ledger C0006).
+\item \code{"irtc"} is the native code path: the person-wise marginal
+likelihood assembled from per-item copula h-functions (the same
+functions \code{\link[=heldout_logloss]{heldout_logloss()}} uses, verified to 1e-6 against
+\code{mle1factor}), maximized by \code{\link[stats:nlminb]{stats::nlminb()}} with an item-local
+finite-difference gradient. No joint table exists at any point, so
+it scales to realistic test lengths.
+}
+
+\code{mle1factor()} exposes no explicit convergence diagnostic, so with the
+wrapped engine \code{converged} reports whether the log-likelihood and every
+dependence parameter came back finite; the native engine reports the
+optimizer's own convergence code. \code{n_parameters} counts the
+second-stage dependence parameters only (first-stage cutpoints are
+profiled empirically).
 }
 \seealso{
 Other model fitting:

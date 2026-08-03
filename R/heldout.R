@@ -48,7 +48,9 @@ heldout_logloss <- function(result, newdata, nq = 61) {
   if (result$engine %in% c("mirt", "irtc") &&
       result$model %in% c("2pl", "rasch", "irtc-2pl-independence")) {
     total <- marginal_loglik_2pl(result$estimates, responses, nq)
-  } else if (result$engine == "FactorCopula") {
+  } else if (grepl("^copula-1f-", result$model)) {
+    # Both copula engines (FactorCopula wrapped, irtc native) store the same
+    # cutpoints + families + thetas; one evaluation path serves both.
     total <- marginal_loglik_copula_1f(result$estimates, responses, nq)
   } else {
     stop(sprintf("Model `%s` (engine %s) is not yet supported by heldout_logloss.",
@@ -135,7 +137,11 @@ copula_h <- function(u, v, family, theta) {
   out <- switch(
     family,
     bvn = stats::pnorm((stats::qnorm(u) - theta * stats::qnorm(v)) / sqrt(1 - theta^2)),
-    frk = {
+    frk = if (abs(theta) < 1e-8) {
+      # Frank's independence limit: the native optimizer may cross theta = 0,
+      # where the closed form is 0/0.
+      u
+    } else {
       em <- expm1(-theta)
       eu <- expm1(-theta * u)
       exp(-theta * v) * eu / (em + eu * expm1(-theta * v))
