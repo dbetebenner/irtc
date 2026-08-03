@@ -1,0 +1,60 @@
+# AI Contribution and Authorship Statement {.unnumbered}
+
+This dissertation represents the intellectual work of Damian W. Betebenner
+with substantive and continuous assistance from AI-based systems —
+principally Anthropic's Claude models, operating through the dissertation.ai
+onboarding platform and Claude Code development sessions — integrated into
+every phase of the work: research design, software implementation,
+registered analysis, and writing. The project is itself, by design, a study
+in AI-native scholarship: it deliberately stress-tests the dataimago /
+dissertation.ai infrastructure while developing the IRTc model family.
+
+## Role of AI in the research and writing process {.unnumbered}
+
+- **Theoretical development**: The IRTc research program (the founding
+  conjecture, the model ladder, the work packages) was authored by the
+  human researcher in a project charter; the AI executed and elaborated the
+  ladder — the Level-1 product-copula wrapper with its exact-equivalence
+  proof obligations, and the native Level-2 one-factor likelihood that
+  replaced the wrapped engine after its scalability wall was documented.
+- **Implementation**: The AI drafted the `irtc` R package test-first
+  (simulators, baseline fits, copula fits, held-out evaluation), under a
+  regime in which every capability claim is re-verified by the continuous
+  integration test suite (~190 tests), including reproduction oracles
+  against the reference engine at documented numerical tolerances.
+- **Analysis**: All model comparisons ran as pre-registered experiments —
+  registered in `experiments/registry.yaml` before execution, evaluated by
+  frozen hash-gated scripts, recorded append-only — with a typed claim
+  ledger (`research/literature/claims.yaml`) gating what may be asserted.
+  The registered acceptance thresholds were set before any data were seen;
+  where results fell short of them, no claims were made.
+- **Expository and editorial support**: The AI drafted the knowledge-base
+  wiki, the benchmark report (rendered entirely from committed run
+  artifacts), and thesis scaffolding, under the writing specification
+  committed at `writing/STYLE.md`.
+
+## Scope and oversight {.unnumbered}
+
+| Contribution area | AI role | Human oversight |
+|---|---|---|
+| Research program | executed and elaborated | authored the charter; adjudicates all direction |
+| R package code | drafted test-first | CI oracles vs reference engines; R CMD check |
+| Benchmark evidence | ran registered experiments | pre-registered gates; append-only registry; claim audit |
+| Prose | drafted under `writing/STYLE.md` | maintainer review; no-unsupported-claims rule |
+
+The verification discipline is structural rather than trust-based: claims
+live in a typed ledger citing the tests that re-verify them; experiments
+cannot produce evidence unless registered first; failure modes (a
+boundary-probability evaluator bug, an engine scalability wall, a
+convergence failure that voided an acceptance criterion) are documented in
+the same public record as successes.
+
+## Authorship and responsibility {.unnumbered}
+
+Despite the substantive role of AI in this work, the author retains full
+responsibility for all claims, formulations, and conclusions presented
+herein. The AI systems are not listed as authors, consistent with
+prevailing norms from the International Committee of Medical Journal
+Editors (ICMJE) and leading scholarly publishers: they do not meet
+authorship criteria concerning accountability, consent, or the capacity to
+respond to review.

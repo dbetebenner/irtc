@@ -23,6 +23,8 @@ book:
     - chapters/08-irw-benchmarks-and-results.qmd
     - chapters/09-diagnostics-sensitivity-limitations.qmd
     - chapters/99-back-matter.qmd
+  appendices:
+    - ai-contribution-statement.qmd
 
 bibliography: references.bib
 
