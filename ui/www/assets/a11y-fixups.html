@@ -1,0 +1,69 @@
+<!-- Accessible names and roles for Quarto's generated site chrome. Quarto
+     website navbar/sidebar markup cannot be overridden with template partials,
+     so this stamps attributes after render. It never rewrites content; the
+     one DOM move is hoisting our own skip link. Each block names the work item it closes;
+     delete a block once Quarto fixes its own output. -->
+<script>
+(function () {
+  function fixups() {
+    // wi-20260905-at-skip-link: let the skip-link target take focus in every
+    // browser, so the next Tab continues from the content, not the header.
+    // Quarto emits include-before-body inside <main>; move the link to the
+    // start of <body> so it is the first Tab stop.
+    var skip = document.querySelector('.dataimago-skip-link');
+    if (skip && document.body.firstElementChild !== skip) {
+      document.body.insertBefore(skip, document.body.firstChild);
+    }
+    var main = document.getElementById('quarto-document-content');
+    if (main && !main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+
+    // WCAG 2.1.1: a code block wider than its box scrolls horizontally, and a
+    // keyboard user can only scroll what can take focus.
+    document.querySelectorAll('pre').forEach(function (el) {
+      if (el.scrollWidth > el.clientWidth && !el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+    });
+
+    // wi-20260905-at-landmark-roles: sidebar section and sidebar-collapse
+    // controls expand/collapse a region -- that is a button, not a
+    // navigation landmark. Quarto types them role="navigation", which floods
+    // the landmark list with unnamed duplicates.
+    document.querySelectorAll('[role="navigation"][data-bs-toggle="collapse"]').forEach(function (el) {
+      el.setAttribute('role', 'button');
+    });
+    // The icon-only section toggle is named just "Toggle section"; say which.
+    document.querySelectorAll('.sidebar-item-toggle[aria-label="Toggle section"]').forEach(function (el) {
+      var text = el.parentElement && el.parentElement.querySelector('.sidebar-item-text');
+      var label = text && text.textContent.trim();
+      if (label) el.setAttribute('aria-label', 'Toggle section: ' + label);
+    });
+
+    // wi-20260905-at-landmark-roles: name the remaining nav landmarks so the
+    // rotor landmark list is short and distinguishable.
+    var names = [
+      ['#quarto-sidebar', 'Site'],
+      ['nav.page-navigation', 'Previous and next page'],
+      ['nav.quarto-secondary-nav', 'Page location'],
+    ];
+    names.forEach(function (pair) {
+      document.querySelectorAll(pair[0]).forEach(function (el) {
+        if (!el.hasAttribute('aria-label') && !el.hasAttribute('aria-labelledby')) el.setAttribute('aria-label', pair[1]);
+      });
+    });
+    var toc = document.querySelector('nav#TOC');
+    if (toc && document.getElementById('toc-title') && !toc.hasAttribute('aria-labelledby')) {
+      toc.setAttribute('aria-labelledby', 'toc-title');
+    }
+
+    // wi-20260905-at-landmark-roles: mark the current page in the sidebar
+    // programmatically, not only by colour.
+    document.querySelectorAll('#quarto-sidebar a.sidebar-link.active[href]').forEach(function (el) {
+      el.setAttribute('aria-current', 'page');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fixups);
+  } else {
+    fixups();
+  }
+})();
+</script>

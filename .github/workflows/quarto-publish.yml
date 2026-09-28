@@ -45,9 +45,10 @@ jobs:
 
       # The package-reference page renders man/*.Rd straight from the
       # source tree (tools::Rd_db(dir=)) -- no package installation and no
-      # Suggests needed; knitr/rmarkdown power the executable chunk.
+      # Suggests needed; knitr/rmarkdown power the executable chunk and xml2
+      # restructures the Rd2HTML fragments (headings, argument lists).
       - name: Install chunk dependencies
-        run: Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
+        run: Rscript -e 'install.packages(c("knitr", "rmarkdown", "xml2"))'
 
       - name: Render site (web profile)
         run: |
