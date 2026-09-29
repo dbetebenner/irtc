@@ -1,0 +1,21 @@
+<!-- Skip link: the first Tab stop on every page (WCAG 2.4.1 Bypass Blocks).
+     Quarto does not ship one, and the docked sidebar puts ~20 focusable stops
+     ahead of <main>. Quarto places include-before-body at the top of <main>,
+     so a11y-fixups.html hoists this link to the start of <body>; with scripts
+     off it stays, harmlessly, at the top of the content.
+     Work item: wi-20260905-at-skip-link. -->
+<style>
+  .dataimago-skip-link {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2000;
+    padding: 0.5rem 1rem;
+    background: var(--bs-body-bg, #fff);
+    color: var(--bs-body-color, #14140f);
+    border: 2px solid currentColor;
+    border-radius: 0.25rem;
+    text-decoration: underline;
+  }
+</style>
+<a class="dataimago-skip-link visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>

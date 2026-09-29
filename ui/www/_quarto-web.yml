@@ -13,3 +13,8 @@ format:
     theme:
       light: assets/neutral-light.scss
       dark: assets/neutral-dark.scss
+    # Accessibility layer for Quarto's generated chrome -- see the comments in
+    # each file (wi-20260905-at-skip-link, wi-20260905-at-landmark-roles).
+    # HTML-only by construction: this overlay never reaches the PDF render.
+    include-before-body: assets/a11y-skip-link.html
+    include-after-body: assets/a11y-fixups.html

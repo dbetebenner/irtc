@@ -44,12 +44,70 @@ topic_concept <- function(rd) {
 }
 concepts <- vapply(db, topic_concept, character(1))
 
+# Rd2HTML fragments carry their own <h3> section headings (Title, Usage,
+# Arguments, ...) and render arguments as layout tables. Injected raw under an
+# h4 function heading, a function's sections outranked the function itself and
+# the heading list became "Title, Name, Usage, ..." repeated per topic
+# (WCAG 1.3.1 / 2.4.10, wi-20260905-at-rd-reference-structure). Restructure the
+# parsed fragment -- no regex over R's HTML:
+#   - Title becomes a lead sentence and Name is dropped (the h4 already says it);
+#   - remaining sections become h5, each carrying the function name for screen
+#     readers, so heading navigation says which function a section belongs to;
+#   - argument/value layout tables become description lists (name -> meaning);
+#   - argument anchor ids are namespaced per topic (they repeat across topics).
+restructure_rd <- function(html, topic) {
+  doc <- xml2::read_html(paste0("<div class=\"rd-topic\">", html, "</div>"))
+  root <- xml2::xml_find_first(doc, "//div[@class='rd-topic']")
+
+  for (h in xml2::xml_find_all(root, "./h3")) {
+    label <- trimws(xml2::xml_text(h))
+    if (label == "Name") {
+      # The Name section is a bare text node naming the topic -- redundant.
+      nxt <- xml2::xml_find_first(h, "following-sibling::node()[normalize-space()][1]")
+      if (inherits(nxt, "xml_node") && xml2::xml_type(nxt) == "text") xml2::xml_remove(nxt)
+      xml2::xml_remove(h)
+    } else if (label == "Title") {
+      lead <- xml2::xml_find_first(h, "following-sibling::p[1]")
+      if (inherits(lead, "xml_node")) xml2::xml_set_attr(lead, "class", "rd-title lead")
+      xml2::xml_remove(h)
+    } else {
+      xml2::xml_name(h) <- "h5"
+      xml2::xml_set_text(h, "")
+      prefix <- xml2::xml_add_child(h, "span", paste0(topic, ": "))
+      xml2::xml_set_attr(prefix, "class", "visually-hidden")
+      xml2::xml_add_child(h, "span", label)
+    }
+  }
+
+  for (tbl in xml2::xml_find_all(root, ".//table[@role='presentation']")) {
+    rows <- xml2::xml_find_all(tbl, ".//tr")
+    cells <- lapply(rows, function(tr) xml2::xml_find_all(tr, "./td"))
+    if (length(rows) == 0 || !all(lengths(cells) == 2)) next
+    dl <- xml2::xml_add_sibling(tbl, "dl", .where = "before")
+    xml2::xml_set_attr(dl, "class", "rd-arguments")
+    for (pair in cells) {
+      dt <- xml2::xml_add_child(dl, "dt")
+      for (child in xml2::xml_contents(pair[[1]])) xml2::xml_add_child(dt, child)
+      dd <- xml2::xml_add_child(dl, "dd")
+      for (child in xml2::xml_contents(pair[[2]])) xml2::xml_add_child(dd, child)
+    }
+    xml2::xml_remove(tbl)
+  }
+
+  for (el in xml2::xml_find_all(root, ".//code[@id]")) {
+    xml2::xml_set_attr(el, "id", paste0(topic, "-arg-", xml2::xml_attr(el, "id")))
+  }
+
+  paste(vapply(xml2::xml_contents(root), as.character, character(1)), collapse = "")
+}
+
 emit_topic <- function(nm) {
   tf <- tempfile(fileext = ".html")
   tools::Rd2HTML(db[[nm]], out = tf, fragment = TRUE)
   html <- paste(readLines(tf, warn = FALSE), collapse = "\n")
-  cat(sprintf("#### `%s`\n\n", sub("\\.Rd$", "", nm)))
-  cat("```{=html}\n<div class=\"rd-topic\">\n", html, "\n</div>\n```\n\n", sep = "")
+  topic <- sub("\\.Rd$", "", nm)
+  cat(sprintf("#### `%s`\n\n", topic))
+  cat("```{=html}\n<div class=\"rd-topic\">\n", restructure_rd(html, topic), "\n</div>\n```\n\n", sep = "")
 }
 
 group_order <- c("simulation", "model fitting", "evaluation", "model results")
