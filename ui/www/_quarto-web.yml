@@ -8,6 +8,15 @@ book:
 # Neutral identity for the published HTML (tokens-neutral-sibling ADR):
 # Level-3 property -- Noto Sans, ink/stone/paper, no dataimago house look.
 # The PDF render (no profile) is untouched.
+# Accessible names for Quarto's icon-only search controls. The submit
+# button's title also becomes the search field's label, so the stock
+# "Submit" made a screen reader call the text field "Submit"
+# (wi-20260905-at-unnamed-search-buttons). a11y-fixups.html mirrors these
+# titles, and the colour toggle's, into aria-label.
+language:
+  search-submit-button-title: "Search"
+  search-clear-button-title: "Clear search"
+
 format:
   html:
     theme:

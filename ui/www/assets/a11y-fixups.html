@@ -59,7 +59,27 @@
     document.querySelectorAll('#quarto-sidebar a.sidebar-link.active[href]').forEach(function (el) {
       el.setAttribute('aria-current', 'page');
     });
+
+    nameIconControls();
+    // The search widget renders (and re-renders) its buttons after load.
+    var search = document.getElementById('quarto-search');
+    if (search && window.MutationObserver) {
+      new MutationObserver(nameIconControls).observe(search, { childList: true, subtree: true });
+    }
   }
+
+  // wi-20260905-at-unnamed-scheme-toggle, wi-20260905-at-unnamed-search-buttons:
+  // Quarto names these icon-only controls with a title tooltip alone, the
+  // weakest naming source. Give each the same words as an aria-label. The
+  // words themselves come from the `language:` block in _quarto.yml.
+  function nameIconControls() {
+    var sel = '.quarto-color-scheme-toggle, .aa-SubmitButton, .aa-ClearButton';
+    document.querySelectorAll(sel).forEach(function (el) {
+      var title = el.getAttribute('title');
+      if (title && !el.hasAttribute('aria-label')) el.setAttribute('aria-label', title);
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', fixups);
   } else {
