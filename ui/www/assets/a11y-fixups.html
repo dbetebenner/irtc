@@ -80,6 +80,33 @@
     });
   }
 
+  // at-2026-09-30-02: VoiceOver + Safari did not announce column headers in
+  // Quarto's pipe tables. Make each header row cell an explicit column header.
+  function scopeTableHeaders() {
+    document.querySelectorAll('table thead th:not([scope])').forEach(function (el) {
+      el.setAttribute('scope', 'col');
+    });
+  }
+
+  // at-2026-09-30-01: Mermaid types its SVG as a graphics document, so
+  // VoiceOver walks every node label line by line and the diagram's order is
+  // lost; its accTitle/accDescr were never announced. A diagram that has a
+  // title is one image: its name is the title, its description the accDescr.
+  // The page carries the full content as text (the figure caption says where).
+  function diagramsAsImages() {
+    document.querySelectorAll('svg.mermaid-js[aria-labelledby]:not([role="img"])').forEach(function (el) {
+      el.setAttribute('role', 'img');
+      el.removeAttribute('aria-roledescription');
+    });
+  }
+
+  scopeTableHeaders();
+  diagramsAsImages();
+  // Mermaid renders after load; catch its SVGs as they arrive.
+  if (window.MutationObserver) {
+    new MutationObserver(diagramsAsImages).observe(document.documentElement, { childList: true, subtree: true });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', fixups);
   } else {
